@@ -217,7 +217,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?= base_url('assets/uploads/default-user.png'); ?>" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">Kiki Kiswanto</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
