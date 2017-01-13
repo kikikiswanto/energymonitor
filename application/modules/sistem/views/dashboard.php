@@ -8,9 +8,9 @@
 
         <div class="info-box-content">
           <b>COST</b> <br>
-          Today : Rp 874747 ,-<br>
-          Weekly : Rp 885784 ,-<br>
-          Monthly : Rp 8948588 ,-
+          Today : Rp <?= ceil($this->electric_m->get_cost(date("Y-m-d"))); ?> ,-<br>
+          Weekly : Rp <?= ceil($this->electric_m->get_cost(date("Y-m"))); ?> ,-<br>
+          Monthly : Rp <?= ceil($this->electric_m->get_cost(date("Y"))); ?> ,-
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -23,9 +23,9 @@
 
         <div class="info-box-content">
           <b>POWER</b> <br>
-          Today : 874747 W<br>
-          Weekly : 885784 W<br>
-          Monthly : 8948588 W
+          Today : <?= $this->electric_m->get_power(date("Y-m-d")); ?> W<br>
+          Monthly : <?= $this->electric_m->get_power(date("Y-m")); ?> W<br>
+          Years : <?= $this->electric_m->get_power(date("Y")); ?> W
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -38,9 +38,9 @@
 
         <div class="info-box-content">
           <b>CURRENT</b> <br>
-          Today  : 87474.00 A<br>
-          Weekly  : 87474.00 A<br>
-          Monthly : 87474.00 A
+          Today  : <?= $this->electric_m->sum_electric('i', date("Y-m-d"))->i; ?> A<br>
+          Monthly  : <?= $this->electric_m->sum_electric('i', date("Y-m"))->i; ?> A<br>
+          Years : <?= $this->electric_m->sum_electric('i', date("Y"))->i; ?> A
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -53,9 +53,9 @@
 
         <div class="info-box-content">
           <b>VOLT</b> <br>
-          Today  : 43483 V<br>
-          Weekly  : 43483 V<br>
-          Monthly : 43483 V
+          Today  : <?= $this->electric_m->sum_electric('v', date("Y-m-d"))->v; ?> V<br>
+          Monthly  : <?= $this->electric_m->sum_electric('v', date("Y-m"))->v; ?> V<br>
+          Years : <?= $this->electric_m->sum_electric('v', date("Y"))->v; ?> V
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -138,7 +138,7 @@
       return res;
     }
 
-    var interactive_plot = $.plot("#interactive", [getRandomData()], {
+    var interactive_plot = $.plot("#interactive", [getRandomData(), getRandomData()+50], {
       grid: {
         borderColor: "#f3f3f3",
         borderWidth: 1,
@@ -162,7 +162,7 @@
       }
     });
 
-    var updateInterval = 500; //Fetch data ever x milliseconds
+    var updateInterval = 1000; //Fetch data ever x milliseconds
     var realtime = "on"; //If == to on then fetch data every x seconds. else stop fetching
     function update() {
 
@@ -191,30 +191,6 @@
     /*
      * END INTERACTIVE CHART
      */
-
-
-    /*
-     * LINE CHART
-     * ----------
-     */
-    //LINE randomly generated data
-
-    var sin = [], cos = [];
-    for (var i = 0; i < 14; i += 0.5) {
-      sin.push([i, Math.sin(i)]);
-      cos.push([i, Math.cos(i)]);
-    }
-    var line_data1 = {
-      data: sin,
-      color: "#3c8dbc"
-    };
-    var line_data2 = {
-      data: cos,
-      color: "#00c0ef"
-    };
-    /* END LINE CHART */
-
-    /* END AREA CHART */
 
   });
 
