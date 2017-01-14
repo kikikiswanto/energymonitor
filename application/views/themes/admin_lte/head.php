@@ -28,8 +28,6 @@
   <script src="<?= $PATH . '/assets/plugins/jQuery/jQuery-2.2.0.min.js'; ?>"></script>
   <!-- Bootstrap 3.3.6 -->
   <script src="<?= $PATH . '/assets/bootstrap/js/bootstrap.min.js'; ?>"></script>
-  <!-- Pace style -->
-  <link rel="stylesheet" href="<?= $PATH . '/assets/plugins/pace/pace.min.css'; ?>">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?= $PATH . '/assets/plugins/datatables/dataTables.bootstrap.css'; ?>">
 

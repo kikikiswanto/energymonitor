@@ -6,7 +6,7 @@
       <div class="info-box">
         <span class="info-box-icon bg-green"><i class="fa fa-money"></i></span>
 
-        <div class="info-box-content">
+        <div class="info-box-content" id="cost">
           <b>COST</b> <br>
           Today : Rp <?= ceil($this->electric_m->get_cost(date("Y-m-d"))); ?> ,-<br>
           Weekly : Rp <?= ceil($this->electric_m->get_cost(date("Y-m"))); ?> ,-<br>
@@ -21,7 +21,7 @@
       <div class="info-box">
         <span class="info-box-icon bg-blue"><i class="fa fa-plug"></i></span>
 
-        <div class="info-box-content">
+        <div class="info-box-content" id="power">
           <b>POWER</b> <br>
           Today : <?= $this->electric_m->get_power(date("Y-m-d")); ?> W<br>
           Monthly : <?= $this->electric_m->get_power(date("Y-m")); ?> W<br>
@@ -36,7 +36,7 @@
       <div class="info-box">
         <span class="info-box-icon bg-red"><i class="fa fa-bolt"></i></span>
 
-        <div class="info-box-content">
+        <div class="info-box-content" id="current">
           <b>CURRENT</b> <br>
           Today  : <?= $this->electric_m->sum_electric('i', date("Y-m-d"))->i; ?> A<br>
           Monthly  : <?= $this->electric_m->sum_electric('i', date("Y-m"))->i; ?> A<br>
@@ -51,7 +51,7 @@
       <div class="info-box">
         <span class="info-box-icon bg-yellow"><i class="fa fa-code-fork"></i></span>
 
-        <div class="info-box-content">
+        <div class="info-box-content" id="volt">
           <b>VOLT</b> <br>
           Today  : <?= $this->electric_m->sum_electric('v', date("Y-m-d"))->v; ?> V<br>
           Monthly  : <?= $this->electric_m->sum_electric('v', date("Y-m"))->v; ?> V<br>
@@ -241,4 +241,31 @@
   }
 
   $("#example1").DataTable();
+
+  setInterval(function(){ 
+  	$.ajax({
+  		url: "<?= base_url() ?>" + "electric/cost", 
+  		success: function(result){
+        	$("#cost").html(result);
+    }});
+
+    $.ajax({
+  		url: "<?= base_url() ?>" + "electric/power", 
+  		success: function(result){
+        	$("#power").html(result);
+    }});
+
+    $.ajax({
+  		url: "<?= base_url() ?>" + "electric/current", 
+  		success: function(result){
+        	$("#current").html(result);
+    }});
+
+    $.ajax({
+  		url: "<?= base_url() ?>" + "electric/volt", 
+  		success: function(result){
+        	$("#volt").html(result);
+    }});
+
+   }, 1000);
 </script>

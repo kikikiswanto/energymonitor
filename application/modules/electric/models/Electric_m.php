@@ -59,4 +59,13 @@ class Electric_m extends CI_Model {
             $cws    = $cw * $s;
             return  $cws;
         }
+
+        public function insert($s='', $i='', $v='')
+        {
+            $this->i            = $i;
+            $this->v            = $v;
+            $this->el_source    = $s;
+            $query = $this->db->insert('kay_electric', $this);
+            return $query;
+        }
 }
