@@ -89,17 +89,52 @@
 
     </div>
     <!-- /.col -->
+    <div class="col-xs-12">
+    	 <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">List Energy Monitor</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Current</th>
+                  <th>Volt</th>
+                  <th>Power</th>
+                  <th>Source</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php 
+                foreach ($electrics as $row) {
+                 ?>
+                <tr>
+                  <td><?= $row->el_time; ?></td>
+                  <td><?= $row->i; ?> A</td>
+                  <td><?= $row->v; ?> V</td>
+                  <td><?= $this->electric_m->get_power($row->el_time); ?> W</td>
+                  <td><?= $row->sc_code; ?> - <?= $row->sc_name; ?></td>
+                </tr>
+                <?php } ?>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+    </div>
 </div>
 <!-- /.row -->
 <!-- FLOT CHARTS -->
 <script src="<?= $PATH . '/assets/plugins/flot/jquery.flot.min.js'; ?>"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
 <script src="<?= $PATH . '/assets/plugins/flot/jquery.flot.resize.min.js'; ?>"></script>
-<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="<?= $PATH . '/assets/plugins/flot/jquery.flot.pie.min.js'; ?>"></script>
-<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="<?= $PATH . '/assets/plugins/flot/jquery.flot.categories.min.js'; ?>"></script>
-<script>
+<!-- DataTables -->
+<script src="<?= $PATH . '/assets/plugins/datatables/jquery.dataTables.min.js'; ?>"></script>
+<script src="<?= $PATH . '/assets/plugins/datatables/dataTables.bootstrap.min.js'; ?>"></script>
+<script type="text/javascript">
   $(function () {
     /*
      * Flot Interactive Chart
@@ -204,4 +239,6 @@
         + "<br>"
         + Math.round(series.percent) + "%</div>";
   }
+
+  $("#example1").DataTable();
 </script>
