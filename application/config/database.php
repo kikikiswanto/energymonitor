@@ -101,10 +101,10 @@ if ($_SERVER['HTTP_HOST'] == "energymonitor.dev") {
 
 	$db['default'] = array(
 		'dsn'	=> '',
-		'hostname' => 'mysql.idhostinger.com',
-		'username' => 'u725890118_kiki',
-		'password' => 'kiswanto',
-		'database' => 'u725890118_emon',
+		'hostname' => 'localhost',
+		'username' => 'prod',
+		'password' => 'K4y00fjjD7DEV',
+		'database' => 'prod_emon',
 		'dbdriver' => 'mysqli',
 		'dbprefix' => '',
 		'pconnect' => FALSE,
