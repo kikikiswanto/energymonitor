@@ -8,9 +8,9 @@
 
         <div class="info-box-content" id="cost">
           <b>COST</b> <br>
-          Today : Rp <?= ceil($this->electric_m->get_cost(date("Y-m-d"))); ?> ,-<br>
-          Weekly : Rp <?= ceil($this->electric_m->get_cost(date("Y-m"))); ?> ,-<br>
-          Monthly : Rp <?= ceil($this->electric_m->get_cost(date("Y"))); ?> ,-
+          Today : Rp <?= number_format(ceil($this->electric_m->get_cost(date("Y-m-d")))); ?> <br>
+          Weekly : Rp <?= number_format(ceil($this->electric_m->get_cost(date("Y-m")))); ?> <br>
+          Monthly : Rp <?= number_format(ceil($this->electric_m->get_cost(date("Y")))); ?> 
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -173,7 +173,7 @@
       return res;
     }
 
-    var interactive_plot = $.plot("#interactive", [getRandomData(), getRandomData()+50], {
+    var interactive_plot = $.plot("#interactive", [getRandomData()], {
       grid: {
         borderColor: "#f3f3f3",
         borderWidth: 1,
@@ -193,6 +193,8 @@
         show: true
       },
       xaxis: {
+        min: 0,
+        max: 10,
         show: true
       }
     });
