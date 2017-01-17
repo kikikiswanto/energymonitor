@@ -43,6 +43,12 @@ class Electric extends CI_Controller {
         ";
     }
 
+    public function list()
+    {
+      $data['electrics'] = $this->electric_m->get_electric();
+      $this->load->view('ajax_list', $data);
+    }
+
     public function insert($source='', $i='', $v='')
     {
     	if ($this->electric_m->insert($source, $i, $v)) {

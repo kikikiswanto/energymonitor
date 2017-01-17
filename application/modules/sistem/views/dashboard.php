@@ -95,7 +95,7 @@
               <h3 class="box-title">List Energy Monitor</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body" id="list">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -106,7 +106,7 @@
                   <th>Source</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody >
                 <?php 
                 foreach ($electrics as $row) {
                  ?>
@@ -118,7 +118,7 @@
                   <td><?= $row->sc_code; ?> - <?= $row->sc_name; ?></td>
                 </tr>
                 <?php } ?>
-                </tfoot>
+                </tbody>
               </table>
             </div>
             <!-- /.box-body -->
@@ -269,6 +269,12 @@
   		url: "<?= base_url() ?>" + "electric/volt", 
   		success: function(result){
         	$("#volt").html(result);
+    }});
+
+    $.ajax({
+      url: "<?= base_url() ?>" + "electric/list", 
+      success: function(result){
+          $("#list").html(result);
     }});
 
    }, 1000);
