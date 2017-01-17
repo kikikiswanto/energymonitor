@@ -9,12 +9,12 @@ class Electric_m extends CI_Model {
 
         public function get_electric()
         {
-        	$this->db->join('kay_source', 'kay_source.sc_code = kay_electric.el_source');
             $this->db->select('*');
             $this->db->from('kay_electric');
-            $this->db->order_by('el_id', 'DESC');
+            $this->db->join('kay_source', 'kay_source.sc_code = kay_electric.el_source');
             $query = $this->db->get();
-            return $query->result();
+            
+            return $query->result_object();
         }
 
         public function count_electric($date='')

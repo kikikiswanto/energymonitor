@@ -242,7 +242,9 @@
         + Math.round(series.percent) + "%</div>";
   }
 
-  $("#example1").DataTable();
+  $("#example1").DataTable({
+    'order' : [[0, 'desc']]
+  });
 
   setInterval(function(){ 
   	$.ajax({
